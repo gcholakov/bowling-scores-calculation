@@ -12,4 +12,4 @@ Since this is only a demo, I didn't spend much time on validations.
 Possible improvements:
 * increase the number of test cases;
 * add more validations;
-* check results with a person aware of bowling rules.
+* check results with a person, who is aware of bowling rules.
