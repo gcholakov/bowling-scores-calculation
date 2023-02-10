@@ -116,6 +116,7 @@ class GameTest {
         game.addFrame(frame8);
         game.addFrame(frame9);
         game.addFrame(frame10);
+        assertFalse(game.isGameOver());
         frame10.addBonusThrow(new Throw(5));
 
         assertEquals(175, game.calculateTotalScoreSoFar());
