@@ -23,7 +23,7 @@ class GameTest {
      * Tests the calculation after two failure frames.
      */
     @Test
-    void calculateTotalScoreSoFar_AfterTwoFailureFrames() {
+    void calculateTotalScore_AfterTwoFailureFrames() {
         Frame frame = frameFactory.createFrame(new Throw(4), new Throw(5));
         assertEquals(FrameType.FAILURE, frame.getFrameType());
         game.addFrame(frame);
@@ -33,14 +33,14 @@ class GameTest {
         game.addFrame(frame);
 
         assertEquals(2, game.getPlayedFramesList().size());
-        assertEquals(10, game.calculateTotalScoreSoFar());
+        assertEquals(10, game.calculateTotalScore());
     }
 
     /**
      * Tests the calculation with four frames, 1 spare and 2 strikes.
      */
     @Test
-    void calculateTotalScoreSoFar_AfterFourWithSpareAndStrike() {
+    void calculateTotalScore_AfterFourWithSpareAndStrike() {
         Frame frame1 = frameFactory.createFrame(new Throw(5), new Throw(5));
         Frame frame2 = frameFactory.createFrame(new Throw(10));
         Frame frame3 = frameFactory.createFrame(new Throw(10));
@@ -55,14 +55,14 @@ class GameTest {
 
         assertFalse(game.isGameOver());
         assertEquals(4, game.getPlayedFramesList().size());
-        assertEquals(69, game.calculateTotalScoreSoFar());
+        assertEquals(69, game.calculateTotalScore());
     }
 
     /**
      * Tests the calculation with four frames, ending with strike.
      */
     @Test
-    void calculateTotalScoreSoFar_EndingWithStrike() {
+    void calculateTotalScore_EndingWithStrike() {
         Frame frame1 = frameFactory.createFrame(new Throw(5), new Throw(5));
         Frame frame2 = frameFactory.createFrame(new Throw(10));
         Frame frame3 = frameFactory.createFrame(new Throw(3), new Throw(5));
@@ -77,14 +77,14 @@ class GameTest {
 
         assertFalse(game.isGameOver());
         assertEquals(4, game.getPlayedFramesList().size());
-        assertEquals(56, game.calculateTotalScoreSoFar());
+        assertEquals(56, game.calculateTotalScore());
     }
 
     /**
      * Tests calculation after 10 frames with all kinds.
      */
     @Test
-    void calculateTotalScoreSoFar_After10AllKinds() {
+    void calculateTotalScore_After10AllKinds() {
         Frame frame1 = frameFactory.createFrame(new Throw(5), new Throw(5));
         Frame frame2 = frameFactory.createFrame(new Throw(10));
         Frame frame3 = frameFactory.createFrame(new Throw(10));
@@ -119,7 +119,7 @@ class GameTest {
         assertFalse(game.isGameOver());
         frame10.addBonusThrow(new Throw(5));
 
-        assertEquals(175, game.calculateTotalScoreSoFar());
+        assertEquals(175, game.calculateTotalScore());
         assertTrue(game.isGameOver());
     }
 
@@ -127,7 +127,7 @@ class GameTest {
      * Tests calculation when the last frame is spare.
      */
     @Test
-    void calculateTotalScoreSoFar_LastIsSpare() {
+    void calculateTotalScore_LastIsSpare() {
         Frame frame1 = frameFactory.createFrame(new Throw(5), new Throw(5));
         Frame frame2 = frameFactory.createFrame(new Throw(10));
         Frame frame3 = frameFactory.createFrame(new Throw(10));
@@ -161,7 +161,7 @@ class GameTest {
         game.addFrame(frame10);
         frame10.addBonusThrow(new Throw(5));
 
-        assertEquals(175, game.calculateTotalScoreSoFar());
+        assertEquals(175, game.calculateTotalScore());
         assertTrue(game.isGameOver());
     }
 
@@ -169,7 +169,7 @@ class GameTest {
      * Tests calculation when the last frame is strike.
      */
     @Test
-    void calculateTotalScoreSoFar_LastIsStrike() {
+    void calculateTotalScore_LastIsStrike() {
         Frame frame1 = frameFactory.createFrame(new Throw(5), new Throw(5));
         Frame frame2 = frameFactory.createFrame(new Throw(10));
         Frame frame3 = frameFactory.createFrame(new Throw(10));
@@ -203,7 +203,7 @@ class GameTest {
         game.addFrame(frame10);
         frame10.addBonusThrow(new Throw(5), new Throw(4));
 
-        assertEquals(184, game.calculateTotalScoreSoFar());
+        assertEquals(184, game.calculateTotalScore());
         assertTrue(game.isGameOver());
     }
 
@@ -211,7 +211,7 @@ class GameTest {
      * Tests when all frames are spares.
      */
     @Test
-    void calculateTotalScoreSoFar_AllSpares() {
+    void calculateTotalScore_AllSpares() {
         Frame prevFrame = null;
 
         for (int i = 0; i < 10; i++) {
@@ -227,14 +227,14 @@ class GameTest {
 
         game.getPlayedFramesList().get(9).addBonusThrow(new Throw(7));
 
-        assertEquals(152, game.calculateTotalScoreSoFar());
+        assertEquals(152, game.calculateTotalScore());
     }
 
     /**
      * Tests when all frames are spares.
      */
     @Test
-    void calculateTotalScoreSoFar_AllStrikes() {
+    void calculateTotalScore_AllStrikes() {
         Frame prevFrame = null;
 
         for (int i = 0; i < 10; i++) {
@@ -253,7 +253,7 @@ class GameTest {
         game.getPlayedFramesList().get(9).addBonusThrow(new Throw(10), new Throw(10));
 
         assertTrue(game.isGameOver());
-        assertEquals(300, game.calculateTotalScoreSoFar());
+        assertEquals(300, game.calculateTotalScore());
     }
 
     /**

@@ -15,19 +15,19 @@ public class StrikeFrame extends SpareFrame {
      */
     @Override
     public int calculatePoints() {
-        if (nextFrame != null) {
-            if (nextFrame.getFrameType() == FrameType.STRIKE) {
-                if (nextFrame.getNextFrame() != null) {
-                    return TEN_PINS + TEN_PINS + nextFrame.getNextFrame().getThrowsList().get(0).getPins();
-                } else {
-                    return TEN_PINS + TEN_PINS + nextFrame.getBonusThrowsList().get(0).getPins();
-                }
-            } else {
-                return TEN_PINS + nextFrame.getThrowsList().stream().mapToInt(Throw::getPins).sum();
-            }
-        } else {
+        if (nextFrame == null) {
             // last frame is strike, calculate with all bonus throws if such
             return TEN_PINS + (bonusThrowsList != null ? bonusThrowsList.stream().mapToInt(Throw::getPins).sum() : 0);
+        }
+
+        if (nextFrame.getFrameType() == FrameType.STRIKE) {
+            if (nextFrame.getNextFrame() != null) {
+                return TEN_PINS + TEN_PINS + nextFrame.getNextFrame().getThrowsList().get(0).getPins();
+            } else {
+                return TEN_PINS + TEN_PINS + nextFrame.getBonusThrowsList().get(0).getPins();
+            }
+        } else {
+            return TEN_PINS + nextFrame.getThrowsList().stream().mapToInt(Throw::getPins).sum();
         }
     }
 

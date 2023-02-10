@@ -31,10 +31,10 @@ public class SpareFrame extends FailureFrame {
     public int calculatePoints() {
         if (nextFrame != null) {
             return TEN_PINS + nextFrame.getThrowsList().get(0).getPins();
-        } else {
-            // last frame is spare, calculate with one throw bonus
-            return getThrowsList().stream().mapToInt(Throw::getPins).sum() + bonusThrowsList.get(0).getPins();
         }
+
+        // last frame is spare, calculate with one throw bonus
+        return getThrowsList().stream().mapToInt(Throw::getPins).sum() + bonusThrowsList.get(0).getPins();
     }
 
     /**

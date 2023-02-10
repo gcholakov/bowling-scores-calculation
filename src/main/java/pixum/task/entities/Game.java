@@ -33,18 +33,18 @@ public class Game {
     public boolean isGameOver() {
         if (getPlayedFramesList().size() < MAX_FRAMES) {
             return false;
-        } else {
-            Frame lastFrame = getPlayedFramesList().get(9);
+        }
 
-            if (lastFrame.getFrameType() == FrameType.SPARE &&
-                    (lastFrame.getBonusThrowsList() == null || lastFrame.getBonusThrowsList().size() != 1)) {
-                return false;
-            }
+        Frame lastFrame = getPlayedFramesList().get(9);
 
-            if (lastFrame.getFrameType() == FrameType.STRIKE &&
-                    (lastFrame.getBonusThrowsList() == null || lastFrame.getBonusThrowsList().size() != 2)) {
-                return false;
-            }
+        if (lastFrame.getFrameType() == FrameType.SPARE &&
+                (lastFrame.getBonusThrowsList() == null || lastFrame.getBonusThrowsList().size() != 1)) {
+            return false;
+        }
+
+        if (lastFrame.getFrameType() == FrameType.STRIKE &&
+                (lastFrame.getBonusThrowsList() == null || lastFrame.getBonusThrowsList().size() != 2)) {
+            return false;
         }
 
         return true;
@@ -61,7 +61,7 @@ public class Game {
     /**
      * Get the total score so far.
      */
-    public int calculateTotalScoreSoFar() {
+    public int calculateTotalScore() {
         int totalScore = 0;
         List<Frame> playedFrames = getPlayedFramesList();
 

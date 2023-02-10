@@ -18,8 +18,8 @@ public class Starter {
         Game playerOneGame = starter.createPlayerOneGame();
         Game playerTwoGame = starter.createPlayerTwoGame();
 
-        int playerOneScores = playerOneGame.calculateTotalScoreSoFar();
-        int playerTwoScores = playerTwoGame.calculateTotalScoreSoFar();
+        int playerOneScores = playerOneGame.calculateTotalScore();
+        int playerTwoScores = playerTwoGame.calculateTotalScore();
 
         log.info("Player one has score {}", playerOneScores);
         log.info("Player two has score {}", playerTwoScores);
